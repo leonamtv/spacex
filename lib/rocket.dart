@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:spacex/constants..dart';
 import 'package:intl/intl.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class Rocket extends StatefulWidget {
 
@@ -422,10 +421,7 @@ class _RocketState extends State<Rocket> {
                     ),
                     SizedBox(height: 15),
                     Center(
-                      child: InkWell(
-                        child: new Text('Wikipedia page'),
-                          onTap: () => launch(rocket['wikipedia'])
-                        ),
+                      child: new Text('Wikipedia page'),
                     )
                   ],
                 );
