@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:spacex/rocket.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,6 +24,7 @@ class _MyAppState extends State<MyApp> {
     ),
   );
 
+  
   @override
   Widget build(BuildContext context) {
 
@@ -44,10 +46,13 @@ class _MyAppState extends State<MyApp> {
           brightness: Brightness.dark,
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          fontFamily: 'Montserrat',
         ),
         home: Scaffold(
           appBar: AppBar(
-            title: Text('Spacex'),
+            title: Text(
+              'Spacex',
+            ),
             elevation: 0,
           ),
           body: SafeArea(
@@ -89,7 +94,10 @@ class _MyAppState extends State<MyApp> {
                         return Material(
                           child: InkWell(
                             onTap: () {
-                              print(rocket);
+                              Navigator.push(context, MaterialPageRoute(
+                                builder: (context) =>
+                                  Rocket(id: rocket['id'])
+                              ));
                             },
                             child: Container(
                               height: ( MediaQuery.of(context).size.height - Scaffold.of(context).appBarMaxHeight ) / rockets.length - 25,
@@ -109,7 +117,12 @@ class _MyAppState extends State<MyApp> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Text(rocket['name']),
+                                    Text(
+                                      rocket['name'],
+                                      style: TextStyle(
+                                        fontSize: 18
+                                      ),
+                                    ),
                                     Align(
                                       alignment: Alignment.bottomRight,
                                       child: Icon(
